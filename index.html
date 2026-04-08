@@ -2,41 +2,162 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mario</title>
+  <title>Mario Ventura</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #ffefe8 0%, #ffefe8 100%);
-      font-family: 'Book Antiqua', Arial, sans-serif;
-      color: #3c3a3a;
+
+    /* --- COLOURS: edit these to retheme everything --- */
+    :root {
+      --cream:   #fff8f3;
+      --peach:   #ffefe8;
+      --gold:    #b5824a;
+      --ink:     #2e2520;
+      --ink-mid: #5a4a40;
+      --ink-lt:  #8a7060;
+      --rule:    #e8d5c4;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--cream); font-family: 'EB Garamond', Georgia, serif; color: var(--ink); }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* --- TOP BAR: photo, name, affiliation, quick links --- */
+    .top-bar {
+      border-bottom: 1px solid var(--rule);
+      padding: 0.9rem 3rem;
       display: flex;
-      flex-direction: column;
       align-items: center;
+      gap: 14px;
     }
-    h1 {
-      font-family: 'Book Antiqua', Arial, sans-serif;
-      font-size: 2.2rem;
-      margin-top: 0.7em;
-      margin-bottom: 0.5em;
-      letter-spacing: 2px;
-      text-shadow: 0 4px 24px rgba(30,60,114,0.3);
+    /*.top-photo { width: 90px; height: 90px; border-radius: 4px; object-fit: cover; flex-shrink: 0; background: #d9b8a2; } */
+    .top-name  { font-size: 1.8rem; font-weight: 400; letter-spacing: 1.5px; }
+    .top-meta  { font-size: 1.1rem; color: var(--ink-lt); margin-top: 2px; }
+    .top-meta a { color: var(--gold); text-decoration: none; }
+    .top-links { margin-left: auto; display: flex; gap: 1.2rem; }
+    .top-links a { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.3px; color: var(--ink-lt); text-decoration: none; }
+    .top-links a:hover { color: var(--gold); }
+
+    /* --- NAV BAR: tab buttons --- */
+    .nav-bar { position: sticky; top: 0; z-index: 100; background: var(--cream); border-bottom: 1px solid var(--rule); padding: 0 3rem; display: flex; }
+    .nav-bar button {
+      background: none; border: none;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.76rem; letter-spacing: 1.8px; text-transform: uppercase;
+      color: var(--ink-lt); cursor: pointer;
+      padding: 0.65rem 1.1rem;
+      position: relative;
     }
-    p {
-      font-size: 1.2rem;
-      padding: 0.3em 14em;
-      max-width: 630px;
-      margin-bottom: 0.3em;
+    .nav-bar button::after { content: ''; position: absolute; bottom: -1px; left: 1.1rem; right: 1.1rem; height: 1.5px; background: var(--gold); transform: scaleX(0); transition: transform 0.2s; }
+    .nav-bar button:hover { color: var(--ink); }
+    .nav-bar button.active { color: var(--gold); }
+    .nav-bar button.active::after { transform: scaleX(1); }
+
+    /* --- CONTENT AREA --- */
+    main { max-width: 760px; margin: 0 auto; padding: 2.2rem 2rem 5rem; }
+    .section { display: none; }
+    .section.active { display: block; animation: fadein 0.25s ease; }
+    @keyframes fadein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; } }
+
+    /* --- ABOUT: photo + bio grid --- */
+    .about-grid { display: grid; grid-template-columns: 155px 1fr; gap: 2.4rem; }
+    /* Replace the div below with <img class="about-photo" src="photo of me.jpeg"> */
+    .about-photo { width: 100%; aspect-ratio: 3/4; border-radius: 3px; object-fit: cover; background: #d9b8a2; }
+    .about-body p { font-size: 0.96rem; line-height: 1.78; color: var(--ink-mid); margin-bottom: 0.85rem; }
+
+    /* Field tags (Economic History, etc.) */
+    .field-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+    .field-tag { font-size: 0.67rem; color: var(--ink-lt); border: 1px solid var(--rule); border-radius: 2px; padding: 3px 8px; }
+
+    /* --- PLACEHOLDER text for empty pages --- */
+    .placeholder { font-size: 0.9rem; color: var(--ink-lt); font-style: italic; }
+
+  
+    /* --- MOBILE --- */
+    @media (max-width: 600px) {
+      .top-bar, .nav-bar { padding: 0.8rem 1.2rem; }
+      .top-links { display: none; }
+      main { padding: 1.6rem 1.2rem 4rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { max-width: 130px; }
     }
+
   </style>
 </head>
 <body>
-  <h1>Mario Ventura</h1>
-  <img src="photo of me.jpeg" alt="Photo of Mario Ventura" style="width:240px; border-radius: 8px; margin-bottom: 1em;">
-  <p>Hello! I'm an economic history master's student at LSE. Previously, I studied economics at Queens' College, Cambridge. </p>
-  <p>Here's my <a href="One_Page_CV.pdf" target="CV">CV</a> :) </p>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+    <div>
+      <div class="top-name">Mario Ventura</div>
+      <div class="top-meta">PhD Student · Department of Economics · UC Berkeley &nbsp;·&nbsp; <a href="mailto:mventura@berkeley.edu">mventura@berkeley.edu</a></div>
+    </div>
+    </div>
+  </div>
+
+  <!-- NAV BAR -->
+  <div class="nav-bar">
+      <div class="container">
+    <button data-section="about" class="active">About</button>
+    <button data-section="research">Research</button>
+    <button data-section="cv">CV</button>
+    <button data-section="teaching">Teaching</button>
+  </div>
+  </div>
+
+  <main>
+
+    <!-- ABOUT -->
+    <section id="about" class="section active">
+      <div class="about-grid">
+        <img class="about-photo" src="photo of me.jpeg">
+        <div class="about-body">
+          <p>I am a PhD student in Economics at UC Berkeley. My research sits at INSERT.</p>
+          <p>Before Berkeley, I completed an MSc in INSERT THIS BIT.</p>
+          <p>I am broadly interested in INSERT THIS BIT.</p>
+          <div class="field-row">
+            <span class="field-tag">Economic History</span>
+            <span class="field-tag">International Finance</span>
+            <span class="field-tag">Labor Economics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research" class="section">
+      <p class="placeholder">[Placeholder — add stuff here]</p>
+    </section>
+
+    <!-- CV -->
+    <section id="cv" class="section">
+      <p class="placeholder">[Placeholder — add CV here]</p>
+    </section>
+
+    <!-- TEACHING -->
+    <section id="teaching" class="section">
+      <p class="placeholder">[Placeholder — add teaching stuff here]</p>
+    </section>
+
+  </main>
+
+  <script>
+    // Tab switching
+    document.querySelectorAll('.nav-bar button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.nav-bar button').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.section).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+
 </body>
 </html>
