@@ -35,11 +35,11 @@
       gap: 14px;
     }
     /*.top-photo { width: 90px; height: 90px; border-radius: 4px; object-fit: cover; flex-shrink: 0; background: #d9b8a2; } */
-    .top-name  { font-size: 1.8rem; font-weight: 400; letter-spacing: 1.5px; }
-    .top-meta  { font-size: 1.1rem; color: var(--ink-lt); margin-top: 2px; }
+    .top-name  { font-size: 2.4rem; font-weight: 400; letter-spacing: 1.5px; }
+    .top-meta  { font-size: 1.2rem; color: var(--ink-lt); margin-top: 2px; }
     .top-meta a { color: var(--gold); text-decoration: none; }
     .top-links { margin-left: auto; display: flex; gap: 1.2rem; }
-    .top-links a { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.3px; color: var(--ink-lt); text-decoration: none; }
+    .top-links a { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1.3px; color: var(--ink-lt); text-decoration: none; }
     .top-links a:hover { color: var(--gold); }
 
     /* --- NAV BAR: tab buttons --- */
@@ -47,7 +47,7 @@
     .nav-bar button {
       background: none; border: none;
       font-family: 'EB Garamond', Georgia, serif;
-      font-size: 0.76rem; letter-spacing: 1.8px; text-transform: uppercase;
+      font-size: 0.9rem; letter-spacing: 1.8px; text-transform: uppercase;
       color: var(--ink-lt); cursor: pointer;
       padding: 0.65rem 1.1rem;
       position: relative;
@@ -58,23 +58,23 @@
     .nav-bar button.active::after { transform: scaleX(1); }
 
     /* --- CONTENT AREA --- */
-    main { max-width: 760px; margin: 0 auto; padding: 2.2rem 2rem 5rem; }
+    main { max-width: 800px; margin: 0 auto; padding: 2.2rem 2rem 5rem; }
     .section { display: none; }
     .section.active { display: block; animation: fadein 0.25s ease; }
     @keyframes fadein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; } }
 
     /* --- ABOUT: photo + bio grid --- */
-    .about-grid { display: grid; grid-template-columns: 155px 1fr; gap: 2.4rem; }
+    .about-grid { display: grid; grid-template-columns: 220px 1fr; gap: 3rem; }
     /* Replace the div below with <img class="about-photo" src="photo of me.jpeg"> */
     .about-photo { width: 100%; aspect-ratio: 3/4; border-radius: 3px; object-fit: cover; background: #d9b8a2; }
-    .about-body p { font-size: 1.1rem; line-height: 1.78; color: var(--ink-mid); margin-bottom: 0.85rem; }
+    .about-body p { font-size: 1.32rem; line-height: 1.78; color: var(--ink-mid); margin-bottom: 0.85rem; }
 
     /* Field tags (Economic History, etc.) */
     .field-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
-    .field-tag { font-size: 0.67rem; color: var(--ink-lt); border: 1px solid var(--rule); border-radius: 2px; padding: 3px 8px; }
+    .field-tag { font-size: 0.8rem; color: var(--ink-lt); border: 1px solid var(--rule); border-radius: 2px; padding: 3px 8px; }
 
     /* --- PLACEHOLDER text for empty pages --- */
-    .placeholder { font-size: 0.9rem; color: var(--ink-lt); font-style: italic; }
+    .placeholder { font-size: 1.0rem; color: var(--ink-lt); font-style: italic; }
 
   
     /* --- MOBILE --- */
@@ -83,7 +83,7 @@
       .top-links { display: none; }
       main { padding: 1.6rem 1.2rem 4rem; }
       .about-grid { grid-template-columns: 1fr; }
-      .about-photo { max-width: 130px; }
+      .about-photo { max-width: 140px; }
     }
 
   </style>
@@ -95,7 +95,7 @@
     <div class="container">
     <div>
       <div class="top-name">Mario Ventura</div>
-      <div class="top-meta">PhD Student · Department of Economics · UC Berkeley &nbsp;·&nbsp; <a href="mailto:mventura@berkeley.edu">mventura@berkeley.edu</a></div>
+      <div class="top-meta">PhD Student · UC Berkeley · mventura@berkeley.edu </div>
     </div>
     </div>
   </div>
@@ -117,9 +117,9 @@
       <div class="about-grid">
         <img class="about-photo" src="photo of me.jpeg">
         <div class="about-body">
-          <p>I am a PhD student in Economics at UC Berkeley. My research sits at INSERT.</p>
-          <p>Before Berkeley, I completed an MSc in INSERT THIS BIT.</p>
-          <p>I am broadly interested in INSERT THIS BIT.</p>
+          <p>Hi! My name is Mario and I'm a first-year economics PhD student at UC Berkeley. I'm broadly interested in economic history, international finance, and labor economics.</p>
+          <p>Previously, I studied economics at Cambridge and economic history at LSE, where I was also a part-time research assistant to Professor Jason Lennard. I then worked for a year as an economist at Cebr.</p>
+          <p>I am always open to meeting new people and having fun conversations — if you would like to meet, don't hesitate to get in touch!</p>
           <div class="field-row">
             <span class="field-tag">Economic History</span>
             <span class="field-tag">International Finance</span>
