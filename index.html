@@ -1,162 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Mario Ventura</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-  <style>
+<meta charset="UTF-8">
+<title>Mario Ventura</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    /* --- COLOURS: edit these to retheme everything --- */
-    :root {
-      --cream:   #fff8f3;
-      --peach:   #ffefe8;
-      --gold:    #b5824a;
-      --ink:     #2e2520;
-      --ink-mid: #5a4a40;
-      --ink-lt:  #8a7060;
-      --rule:    #e8d5c4;
-    }
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--cream); font-family: 'EB Garamond', Georgia, serif; color: var(--ink); }
-    
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
+body{
+  background:#ffefe8;
+  font-family:'Book Antiqua',Georgia,serif;
+  color:#3c3a3a;
+  font-size:17px;
+  line-height:1.8;
+}
 
-    /* --- TOP BAR: photo, name, affiliation, quick links --- */
-    .top-bar {
-      border-bottom: 1px solid var(--rule);
-      padding: 0.9rem 3rem;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    /*.top-photo { width: 90px; height: 90px; border-radius: 4px; object-fit: cover; flex-shrink: 0; background: #d9b8a2; } */
-    .top-name  { font-size: 2.4rem; font-weight: 400; letter-spacing: 1.5px; }
-    .top-meta  { font-size: 1.2rem; color: var(--ink-lt); margin-top: 2px; }
-    .top-meta a { color: var(--gold); text-decoration: none; }
-    .top-links { margin-left: auto; display: flex; gap: 1.2rem; }
-    .top-links a { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1.3px; color: var(--ink-lt); text-decoration: none; }
-    .top-links a:hover { color: var(--gold); }
+header{text-align:center;padding:2.7rem 1rem .4rem}
+h1{font-size:2.2rem;font-weight:400;letter-spacing:2px}
 
-    /* --- NAV BAR: tab buttons --- */
-    .nav-bar { position: sticky; top: 0; z-index: 100; background: var(--cream); border-bottom: 1px solid var(--rule); padding: 0 3rem; display: flex; }
-    .nav-bar button {
-      background: none; border: none;
-      font-family: 'EB Garamond', Georgia, serif;
-      font-size: 0.9rem; letter-spacing: 1.8px; text-transform: uppercase;
-      color: var(--ink-lt); cursor: pointer;
-      padding: 0.65rem 1.1rem;
-      position: relative;
-    }
-    .nav-bar button::after { content: ''; position: absolute; bottom: -1px; left: 1.1rem; right: 1.1rem; height: 1.5px; background: var(--gold); transform: scaleX(0); transition: transform 0.2s; }
-    .nav-bar button:hover { color: var(--ink); }
-    .nav-bar button.active { color: var(--gold); }
-    .nav-bar button.active::after { transform: scaleX(1); }
+nav{text-align:center;padding:.5rem 1rem 1.8rem}
 
-    /* --- CONTENT AREA --- */
-    main { max-width: 800px; margin: 0 auto; padding: 2.2rem 2rem 5rem; }
-    .section { display: none; }
-    .section.active { display: block; animation: fadein 0.25s ease; }
-    @keyframes fadein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; } }
+nav a{
+  position:relative;
+  display:inline-block;
+  margin:0 .9rem;
+  padding:.2rem 0;
+  font-size:.85rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:#8a7060;
+  transition:.2s;
+}
 
-    /* --- ABOUT: photo + bio grid --- */
-    .about-grid { display: grid; grid-template-columns: 220px 1fr; gap: 3rem; }
-    /* Replace the div below with <img class="about-photo" src="photo of me.jpeg"> */
-    .about-photo { width: 100%; aspect-ratio: 3/4; border-radius: 3px; object-fit: cover; background: #d9b8a2; }
-    .about-body p { font-size: 1.32rem; line-height: 1.78; color: var(--ink-mid); margin-bottom: 0.85rem; }
+nav a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-3px;
+  width:100%;
+  height:1px;
+  background:#3c3a3a;
+  transform:scaleX(0);
+  transition:transform .2s;
+}
 
-    /* Field tags (Economic History, etc.) */
-    .field-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
-    .field-tag { font-size: 0.8rem; color: var(--ink-lt); border: 1px solid var(--rule); border-radius: 2px; padding: 3px 8px; }
+nav a:hover,
+nav a.active{
+  color:#3c3a3a;
+}
 
-    /* --- PLACEHOLDER text for empty pages --- */
-    .placeholder { font-size: 1.0rem; color: var(--ink-lt); font-style: italic; }
+nav a:hover::after,
+nav a.active::after{
+  transform:scaleX(1);
+}
 
-  
-    /* --- MOBILE --- */
-    @media (max-width: 600px) {
-      .top-bar, .nav-bar { padding: 0.8rem 1.2rem; }
-      .top-links { display: none; }
-      main { padding: 1.6rem 1.2rem 4rem; }
-      .about-grid { grid-template-columns: 1fr; }
-      .about-photo { max-width: 140px; }
-    }
+main{
+  max-width:780px;
+  margin:auto;
+  padding:0 2rem 5rem;
+}
 
-  </style>
+.section{display:none}
+.section.active{display:block}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:2.5rem;
+  align-items:start;
+}
+
+.about-photo{
+  width:100%;
+  aspect-ratio:3/4;
+  border-radius:4px;
+  object-fit:cover;
+  display:block;
+}
+
+p{margin-bottom:.85rem}
+
+a{color:#8a7060}
+a:hover{color:#3c3a3a}
+
+.placeholder{
+  color:#8a7060;
+  font-style:italic;
+  font-size:.9rem;
+}
+
+@media(max-width:650px){
+  .about-grid{grid-template-columns:1fr}
+  .about-photo{max-width:150px}
+}
+</style>
 </head>
+
 <body>
 
-  <!-- TOP BAR -->
-  <div class="top-bar">
-    <div class="container">
+<header>
+  <h1>Mario Ventura</h1>
+</header>
+
+<nav>
+  <a href="#" class="active" data-section="about">About</a>
+  <a href="#" data-section="cv">CV</a>
+</nav>
+
+<main>
+
+<section id="about" class="section active">
+  <div class="about-grid">
+
+    <img class="about-photo" src="photo of me.jpeg" alt="Mario Ventura">
+
     <div>
-      <div class="top-name">Mario Ventura</div>
-      <div class="top-meta">PhD Student · UC Berkeley · mventura@berkeley.edu </div>
+      <p>Hi! My name is Mario and I'm a first-year economics PhD student at UC Berkeley. I'm broadly interested in economic history, international finance, and labor economics.</p>
+
+      <p>Previously, I studied economics at Cambridge and economic history at LSE, where I was also a part-time research assistant to Professor Jason Lennard. I then worked for a year as an economist at Cebr.</p>
+
+      <p>I'm always open to meeting new people — if you would like to chat, feel free to reach me at <a href="mailto:mventura@berkeley.edu">mventura@berkeley.edu</a>.</p>
     </div>
-    </div>
+
   </div>
+</section>
 
-  <!-- NAV BAR -->
-  <div class="nav-bar">
-      <div class="container">
-    <button data-section="about" class="active">About</button>
-    <!-- UN-COMMENT THIS ONCE I ACTUALLY HAVE RESEARCH AND TEACHING
-    <button data-section="teaching">Teaching</button>
-    <button data-section="research">Research</button>
-    -->
-    <button data-section="cv">CV</button>
-  </div>
-  </div>
+<section id="cv" class="section">
+  <p class="placeholder">[CV coming soon]</p>
+</section>
 
-  <main>
+</main>
 
-    <!-- About -->
-    <section id="about" class="section active">
-      <div class="about-grid">
-        <img class="about-photo" src="photo of me.jpeg">
-        <div class="about-body">
-          <p>Hi! My name is Mario and I'm a first-year economics PhD student at UC Berkeley. I'm broadly interested in economic history, international finance, and labor economics.</p>
-          <p>Previously, I studied economics at Cambridge and economic history at LSE, where I was also a part-time research assistant to Professor Jason Lennard. I then worked for a year as an economist at Cebr.</p>
-          <p>I'm always open to meeting new people — if you would like to chat, don't hesitate to get in touch!</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Research (UN-COMMENT THIS WHEN I ACTUALLY HAVE CONTENT TO PLACE HERE)
-    <section id="research" class="section">
-      <p class="placeholder">[Placeholder — add stuff here]</p>
-    </section>
-    -->
-
-    <!-- Teaching
-    <section id="teaching" class="section">
-      <p class="placeholder">[Placeholder — add teaching stuff here]</p>
-    </section>
-    -->
-
-    <!-- CV -->
-    <section id="cv" class="section">
-      <p class="placeholder">[Placeholder — add CV here]</p>
-    </section>
-
-  </main>
-
-  <script>
-    // Tab switching
-    document.querySelectorAll('.nav-bar button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.nav-bar button').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.section).classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    });
-  </script>
+<script>
+document.querySelectorAll('nav a').forEach(link=>{
+  link.addEventListener('click',e=>{
+    e.preventDefault()
+    document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'))
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'))
+    link.classList.add('active')
+    document.getElementById(link.dataset.section).classList.add('active')
+  })
+})
+</script>
 
 </body>
 </html>
